@@ -37,6 +37,9 @@ dependencies:
   material_design_icons_flutter: ^5.0.6595
   lottie: ^1.2.2
 
+  uuid: ^3.0.6
+  image_picker: ^0.8.4+11
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

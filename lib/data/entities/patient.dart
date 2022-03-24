@@ -1,3 +1,7 @@
+import 'package:uuid/uuid.dart';
+
+import 'post.dart';
+
 class Patient {
   String id;
   String? name;
@@ -7,6 +11,7 @@ class Patient {
   String? avatar;
   String? disease;
   List<String>? activities;
+  List<Post>? posts;
   List<Patient>? friends;
 
   Patient({
@@ -18,6 +23,7 @@ class Patient {
     this.avatar,
     this.disease,
     this.activities,
+    this.posts,
     this.friends,
   });
 
@@ -32,6 +38,7 @@ class Patient {
         avatar: json['avatar'] as String?,
         disease: json['disease'] as String?,
         activities: json['activities'] as List<String>?,
+        posts: json['posts'] as List<Post>?,
         friends: (json['friends'] as List<dynamic>?)?.map((e) => Patient.fromJson(e as Map<String, dynamic>)).toList(),
       );
 
@@ -46,4 +53,14 @@ class Patient {
         'activities': activities,
         'friends': friends,
       };
+
+  void addImagePost(String? path) {
+    posts ??= [];
+    posts!.add(Post(id: const Uuid().v4(), imagePath: path));
+  }
+
+  void addJournalPost(String? journal) {
+    posts ??= [];
+    posts!.add(Post(id: const Uuid().v4(), journal: journal));
+  }
 }

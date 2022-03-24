@@ -63,6 +63,7 @@ class _FeedState extends State<Feed> {
                               ),
                             ),
                             PopupMenuItem(
+                              onTap: () async => await _displayNewJournalDialog(context),
                               child: Row(
                                 children: const [
                                   Icon(MdiIcons.notebookPlusOutline),
@@ -105,6 +106,35 @@ class _FeedState extends State<Feed> {
     }
   }
 
+  Future<void> _displayNewJournalDialog(BuildContext context) async {
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: const Text('Novo diário'),
+            content: TextField(
+              onChanged: (value) {},
+              controller: TextEditingController(),
+              decoration: const InputDecoration(hintText: "Como está sendo o seu dia?"),
+            ),
+            actions: <Widget>[
+              TextButton(
+                child: const Text('CANCEL'),
+                onPressed: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+              ),
+              TextButton(
+                child: const Text('OK'),
+                onPressed: () => Navigator.pop(context),
+              ),
+            ],
+          );
+        });
+  }
+
   void addActivity({XFile? image, String? journal}) async {
     Widget? imgActivity;
     if (image != null) {
@@ -112,9 +142,11 @@ class _FeedState extends State<Feed> {
     }
     setState(() {
       if (imgActivity != null) {
+        widget.patient.addImagePost(image?.path);
         _activities.insert(0, imgActivity);
         _indicators.insert(0, _buildHourOfDay(TimeOfDay(hour: DateTime.now().hour, minute: DateTime.now().minute)));
       } else if (journal != null) {
+        widget.patient.addImagePost(journal);
         _activities.insert(0, _buildJournalActivity(journal));
         _indicators.insert(0, _buildHourOfDay(TimeOfDay(hour: DateTime.now().hour, minute: DateTime.now().minute)));
       }

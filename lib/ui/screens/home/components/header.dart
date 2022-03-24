@@ -95,15 +95,15 @@ class Header extends StatelessWidget {
                             Padding(
                               padding: const EdgeInsets.only(left: 24.0),
                               child: Column(
-                                children: const [
+                                children: [
                                   Text(
-                                    "10",
-                                    style: TextStyle(
+                                    patient.posts?.length.toString() ?? "0",
+                                    style: const TextStyle(
                                       color: Colors.white,
                                       fontSize: 18.0,
                                     ),
                                   ),
-                                  Padding(
+                                  const Padding(
                                     padding: EdgeInsets.only(top: 8.0),
                                     child: Text(
                                       "Publicações",

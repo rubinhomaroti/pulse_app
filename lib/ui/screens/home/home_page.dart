@@ -30,6 +30,7 @@ class HomePage extends StatelessWidget {
               ),
             ],
           ),
+          StatusBox(patient: newPatient),
           FriendsList(patient: newPatient),
           Feed(patient: newPatient),
         ],

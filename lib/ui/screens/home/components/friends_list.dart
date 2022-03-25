@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import 'package:pulse_app/data/entities/entities.dart';
@@ -16,7 +18,7 @@ class FriendsList extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Padding(
-              padding: EdgeInsets.only(top: 40.0, left: 16.0),
+              padding: EdgeInsets.only(left: 16.0),
               child: Text(
                 "Amigos",
                 style: TextStyle(
@@ -41,7 +43,7 @@ class FriendsList extends StatelessWidget {
                             child: CircleAvatar(
                               radius: 32.0,
                               child: Lottie.asset(patient.friends![index].avatar!),
-                              backgroundColor: Colors.white,
+                              backgroundColor: Colors.primaries[Random().nextInt(Colors.primaries.length)],
                             ),
                             onTap: () {},
                           ),

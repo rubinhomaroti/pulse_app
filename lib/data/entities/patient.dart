@@ -63,4 +63,6 @@ class Patient {
     posts ??= [];
     posts!.add(Post(id: const Uuid().v4(), journal: journal));
   }
+
+  String? getFirstName() => name?.split(' ').first;
 }

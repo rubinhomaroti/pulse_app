@@ -19,7 +19,10 @@ class IconText extends StatelessWidget {
     return Row(
       children: [
         Icon(icon, size: 16.0, color: iconColor),
-        Text(text, style: style),
+        Padding(
+          padding: const EdgeInsets.only(left: 8.0),
+          child: Text(text, style: style),
+        ),
       ],
     );
   }

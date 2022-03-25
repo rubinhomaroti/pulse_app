@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'ui/screens/home/home_page.dart';
+import 'ui/screens/posts/posts_page.dart';
 import 'ui/screens/register/register_page.dart';
 
 class App extends StatelessWidget {
@@ -17,6 +18,7 @@ class App extends StatelessWidget {
       routes: {
         '/home': (context) => HomePage(),
         '/register': (context) => const RegisterPage(),
+        '/posts': (context) => const PostsPage(),
       },
     );
   }
